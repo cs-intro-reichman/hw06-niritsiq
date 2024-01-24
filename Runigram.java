@@ -87,11 +87,11 @@ public class Runigram {
 	 */
 	public static Color[][] flippedHorizontally(Color[][] image) {
 		//// Replace the following statement with your code
-
+		int reversedcol = (image.length - 1);
 		Color[][] flip = new Color[image.length][image[0].length];
 		for (int i = 0; i < image.length; i++) {
 			for (int j = 0; j < image[0].length; j++) {
-				flip[i][image.length - j - 1] = image[i][j];
+				flip[reversedcol - i][j] = image[i][j];
 			}
 		}
 		return flip;
