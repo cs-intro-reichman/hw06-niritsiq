@@ -19,7 +19,7 @@ public class Runigram {
 		Color[][] imageOut;
 
 		// Tests the horizontal flipping of an image:
-		imageOut = flippedVertically(tinypic);
+		imageOut = (luminance(tinypic));
 		System.out.println();
 		print(imageOut);
 
@@ -120,7 +120,13 @@ public class Runigram {
 	// the three values r = lum, g = lum, b = lum.
 	public static Color luminance(Color pixel) {
 		//// Replace the following statement with your code
-		return null;
+
+		int r = pixel.getRed();
+		int g = pixel.getGreen();
+		int b = pixel.getBlue();
+		int lum = (int) ((0.299 * r) + (0.587 * g) + (0.114 * b));
+
+		return new Color(lum, lum, lum);
 	}
 
 	/**
