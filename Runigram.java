@@ -47,10 +47,10 @@ public class Runigram {
 		//// Replace the following statement with your code.
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numCols; j++) {
-				int red = in.readInt();
-				int green = in.readInt();
-				int blue = in.readInt();
-				image[i][j] = new Color(red, green, blue);
+				int r = in.readInt();
+				int g = in.readInt();
+				int b = in.readInt();
+				image[i][j] = new Color(r, g, b);
 			}
 		}
 		return image;
@@ -73,7 +73,6 @@ public class Runigram {
 	// image.
 	private static void print(Color[][] image) {
 		//// Replace this comment with your code
-
 		for (int i = 0; i < image.length; i++) {
 			for (int j = 0; j < image[0].length; j++) {
 				print(image[i][j]);
@@ -88,17 +87,15 @@ public class Runigram {
 	 */
 	public static Color[][] flippedHorizontally(Color[][] image) {
 		//// Replace the following statement with your code
-		Color[][] newImage = new Color[image.length][image[0].length];
+
+		Color[][] flip = new Color[image.length][image[0].length];
 		for (int i = 0; i < image.length; i++) {
-			for (int j = 0; i < image[0].length; j++) {
-
-				newImage[image.length - i - 1][j] = image[i][j];
-
+			for (int j = 0; j < image[0].length; j++) {
+				flip[i][image.length - 1 - j] = image[i][j];
 			}
-
 		}
+		return flip;
 
-		return newImage;
 	}
 
 	/**
@@ -106,8 +103,14 @@ public class Runigram {
 	 */
 	public static Color[][] flippedVertically(Color[][] image) {
 		//// Replace the following statement with your code
+		Color[][] flip = new Color[image.length][image[0].length];
+		for (int i = 0; i < image.length; i++) {
+			for (int j = 0; j < image[0].length; j++) {
+				flip[image.length - i - 1][j] = image[i][j];
+			}
+		}
+		return flip;
 
-		return null;
 	}
 
 	// Computes the luminance of the RGB values of the given pixel, using the
