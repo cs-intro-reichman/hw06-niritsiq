@@ -19,9 +19,9 @@ public class Runigram {
 		Color[][] imageOut;
 
 		// Tests the horizontal flipping of an image:
-		// imageOut = (luminance(tinypic));
-		System.out.println();
-		print(imageOut);
+		// imageOut = flippedHorizontally(luminance(tinypic));
+		// System.out.println();
+		// print(imageOut);
 
 		//// Write here whatever code you need in order to test your work.
 		//// You can reuse / overide the contents of the imageOut array.
@@ -87,11 +87,11 @@ public class Runigram {
 	 */
 	public static Color[][] flippedHorizontally(Color[][] image) {
 		//// Replace the following statement with your code
-		int reversedcol = (image.length - 1);
+
 		Color[][] flip = new Color[image.length][image[0].length];
 		for (int i = 0; i < image.length; i++) {
 			for (int j = 0; j < image[0].length; j++) {
-				flip[reversedcol - i][j] = image[i][j];
+				flip[i][j] = image[i][image.length - j - 1];
 			}
 		}
 		return flip;
@@ -106,7 +106,7 @@ public class Runigram {
 		Color[][] flip = new Color[image.length][image[0].length];
 		for (int i = 0; i < image.length; i++) {
 			for (int j = 0; j < image[0].length; j++) {
-				flip[image.length - i - 1][j] = image[i][j];
+				flip[i][j] = image[image.length - i - 1][j];
 			}
 		}
 		return flip;
@@ -134,7 +134,16 @@ public class Runigram {
 	 */
 	public static Color[][] grayScaled(Color[][] image) {
 		//// Replace the following statement with your code
-		return null;
+		color pix;
+		for (int i = 0; i < image.length; i++) {
+			for (int j = 0; j < image[0].length; j++) {
+				pix = image[i][j];
+				pix = luminance(image[i][j]);
+				image[i][j] = pix;
+
+			}
+		}
+		return image;
 	}
 
 	/**
@@ -143,7 +152,14 @@ public class Runigram {
 	 */
 	public static Color[][] scaled(Color[][] image, int width, int height) {
 		//// Replace the following statement with your code
-		return null;
+		Color[][] newC = new Color[width][height];
+		for (int i = 0; i < image.length; i++) {
+			for (int j = 0; j < image[0].length; j++) {
+				newC[i * (width / image.length)][j * (height / image[0].length)] = image[i][j];
+
+			}
+		}
+		return newC;
 	}
 
 	/**
