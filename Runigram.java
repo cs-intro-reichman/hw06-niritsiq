@@ -19,9 +19,10 @@ public class Runigram {
 		Color[][] imageOut;
 
 		// Tests the horizontal flipping of an image:
-		// imageOut = flippedHorizontally(luminance(tinypic));
-		// System.out.println();
-		// print(imageOut);
+		imageOut = flippedHorizontally((tinypic));
+		System.out.println();
+		print(imageOut);
+		// imageOut = blend(tinypic, 3, 5);
 
 		//// Write here whatever code you need in order to test your work.
 		//// You can reuse / overide the contents of the imageOut array.
@@ -134,7 +135,7 @@ public class Runigram {
 	 */
 	public static Color[][] grayScaled(Color[][] image) {
 		//// Replace the following statement with your code
-		color pix;
+		Color pix;
 		for (int i = 0; i < image.length; i++) {
 			for (int j = 0; j < image[0].length; j++) {
 				pix = image[i][j];
@@ -173,7 +174,13 @@ public class Runigram {
 	 */
 	public static Color blend(Color c1, Color c2, double alpha) {
 		//// Replace the following statement with your code
-		return null;
+
+		int r = (int) (c1.getRed() * alpha + (1 - alpha) * c2.getRed());
+		int g = (int) (c1.getGreen() * alpha + (1 - alpha) * c2.getGreen());
+		int b = (int) (c1.getBlue() * alpha + (1 - alpha) * c2.getBlue());
+		Color newColor = new Color(r, g, b);
+
+		return newColor;
 	}
 
 	/**
