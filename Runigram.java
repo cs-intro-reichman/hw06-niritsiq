@@ -153,17 +153,21 @@ public class Runigram {
 	 */
 	public static Color[][] scaled(Color[][] image, int width, int height) {
 		//// Replace the following statement with your code
-		double scaleW = (double) (image[0].length / width);
-		double scaleH = (double) (image.length / height);
-		Color[][] newC = new Color[height][width];
-		for (int i = 0; i < image.length; i++) {
-			for (int j = 0; j < image[0].length; j++) {
+		int w0 = image[0].length;
+		int h0 = image.length;
+		int w = width;
+		int h = height;
+		double scaleW = (double) w0 / w;
+		double scaleH = (double) h0 / h;
+		Color[][] sc = new Color[h][w];
+		for (int i = 0; i < h; i++) {
+			for (int j = 0; j < w; j++) {
 				double x = i * scaleH;
 				double y = j * scaleW;
-				newC[i][j] = image[(int) x][(int) y];
+				sc[i][j] = image[(int) x][(int) y];
 			}
 		}
-		return newC;
+		return sc;
 	}
 
 	/**
@@ -213,13 +217,13 @@ public class Runigram {
 	 */
 	public static void morph(Color[][] source, Color[][] target, int n) {
 		//// Replace this comment with your code
-		Color[][] morphIm;
+		Color[][] morphIm = new Color[source[0].length][source.length];
+		Color[][] image2 = new Color[source[0].length][source.length];
 		double alpha = 0;
-		if (source.length != target.length || source[0].length != target[0].length)
-			target = scaled(target, source[0].length, source.length);
+		image2 = scaled(target, source[0].length, source.length);
 		for (int i = 0; i < n; i++) {
-			alpha = (double) ((n - 1) / n);
-			morphIm = blend(source, target, alpha);
+			alpha = (double) ((n - i) / n);
+			morphIm = blend(source, image2, alpha);
 			Runigram.display(morphIm);
 			StdDraw.pause(100);
 		}
