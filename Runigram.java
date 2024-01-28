@@ -143,7 +143,7 @@ public class Runigram {
 
 			}
 		}
-		return image;
+		return pix;
 	}
 
 	/**
