@@ -92,7 +92,7 @@ public class Runigram {
 		Color[][] flip = new Color[image.length][image[0].length];
 		for (int i = 0; i < image.length; i++) {
 			for (int j = 0; j < image[0].length; j++) {
-				flip[i][j] = image[i][image.length - j - 1];
+				flip[i][j] = image[i][image[0].length - j - 1];
 			}
 		}
 		return flip;
