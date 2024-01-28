@@ -153,11 +153,14 @@ public class Runigram {
 	 */
 	public static Color[][] scaled(Color[][] image, int width, int height) {
 		//// Replace the following statement with your code
+		double scaleW = (double) (image[0].length / width);
+		double scaleH = (double) (image.length / height);
 		Color[][] newC = new Color[height][width];
 		for (int i = 0; i < image.length; i++) {
 			for (int j = 0; j < image[0].length; j++) {
-				newC[i * (height / image.length)][j * (width / image[0].length)] = image[i][j];
-
+				double x = i * scaleH;
+				double y = j * scaleW;
+				newC[i][j] = image[(int) x][(int) y];
 			}
 		}
 		return newC;
@@ -211,7 +214,7 @@ public class Runigram {
 	public static void morph(Color[][] source, Color[][] target, int n) {
 		//// Replace this comment with your code
 		Color[][] morphIm;
-		Double alpha = 0;
+		double alpha = 0;
 		if (source.length != target.length || source[0].length != target[0].length)
 			target = scaled(target, source[0].length, source.length);
 		for (int i = 0; i < n; i++) {
